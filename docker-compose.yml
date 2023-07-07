@@ -1,0 +1,16 @@
+version: '3.3'
+services:
+    base:
+        environment:
+            - DISPLAY
+            - GRANT_SUDO=yes
+            - JUPYTER_ENABLE_LAB=no
+        volumes:
+            - '/tmp/.X11-unix:/tmp/.X11-unix:rw'
+            - '/dev/dri:/dev/dri'
+            - './data:/home/jovyan/work'
+        # container_name: "set_by_user_optionally" <<-- commented out because i'm naming the container using custom script
+        ports:
+            - '8848:8888'
+        user: root
+        image: 'cschranz/gpu-jupyter:v1.5_cuda-11.6_ubuntu-20.04_python-only'
