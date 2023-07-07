@@ -20,24 +20,27 @@ then
     mkdir data/
     touch .gitignore # might be helpful
 
-    docker compose -p $name up -d
+    # docker compose -p $name up -d
     echo -e 
     docker ps
     
-    echo "enable xhost for GUI applications? y/n"
-    read enable_xhost
-    while [ $enable_xhost -ne 'n' || $enable_xhost -ne 'n']
-    do
-        echo "enable xhost for GUI applications? y/n"
-        read enable_xhost
-    done
+    echo ""
+    while true; do
 
-    if [ $enable_xhost -eq "y" ]
-    then
-        xhost +local:root # dangerous line I know but this isn't prod :P 
-    else
-        echo "GUI apps disabled(may run into errors!)"
-    fi
+    read -p "enable xhost for GUI applications? [y]/n" yn
+
+    case $yn in 
+        y ) echo ok, we will proceed;
+            xhost +local:root
+            break;;
+        n ) echo exiting...;
+            exit;;
+        * ) echo proceeding
+            xhost +local:root
+            break;;
+    esac
+
+    done
 else
     echo "env already exists!"
     
