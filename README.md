@@ -1,8 +1,11 @@
 # MlDockerizeStart
 Start a simple ML development docker container with a single script!
+With credit to cschranz/gpu-jupyter(https://hub.docker.com/r/cschranz/gpu-jupyter)
 
 # Installation
-git ...
+```bash
+git clone https://github.com/Zelo-S/ml_dockerize_start.git
+```
 
 # How to use
 ```bash
