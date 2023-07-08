@@ -20,7 +20,7 @@ then
     mkdir data/
     touch .gitignore # might be helpful
 
-    # docker compose -p $name up -d
+    docker compose -p $name up -d
     echo -e 
     docker ps
     
@@ -30,7 +30,7 @@ then
     read -p "enable xhost for GUI applications? [y]/n" yn
 
     case $yn in 
-        y ) echo ok, we will proceed;
+        y ) echo proceeding
             xhost +local:root
             break;;
         n ) echo exiting...;
